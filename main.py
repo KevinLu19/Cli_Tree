@@ -19,11 +19,13 @@ def main():
     # parser = argparse.ArgumentParser(description=PARSE_MESSAGE)
     # args = parser.parse_args()
 
-    parse = argparse.ArgumentParser(description="CLI Tree for directory.")
-    parse.add_argument("-v", action="version", version=__version__,help="shows program's version number and exits")
+    parse = argparse.ArgumentParser(description="CLI Tree. Directory tree generator.")
+    parse.add_argument("ROOT_DIR", help="Genearte a full directory tree starting at ROOT_DIR")
+    parse.add_argument("-v", "--version",action="version", version=__version__,help="shows program's version number and exits")
+    parse.add_argument("-d", "--dir-only", action= tree_cli.find_subdirectories() ,help="Generates a directory-only tree.")
+    parse.add_argument("-o [OUTPUT_FILE]", "--output-file [OUTPUT_FILE]", help="Genearte a full directory tree and save it to file.")
     args = parse.parse_args()
 
-    print (args)
 
 
 if __name__ == "__main__":
