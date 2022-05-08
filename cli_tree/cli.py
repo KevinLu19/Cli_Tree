@@ -9,11 +9,17 @@ class Directories:
     def __init__(self):
         pass
 
+    def find_root_dir(self):
+        PROJECT_ROOT = os.path.dirname(__file__)
+        return PROJECT_ROOT
+
     def find_subdirectories(self):
         path = Path(".")
         for subdirectories in path.iterdir():
             if subdirectories.is_dir():
                 print(subdirectories)
+                #print(self.find_root_dir())
+                # print ("|")
     
     def list_files_in_subdirectories(self, path):
         subdirectory_item = list(path.glob("**/*.py"))
