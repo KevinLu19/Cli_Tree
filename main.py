@@ -3,6 +3,7 @@ import cli_tree.cli as cli
 import argparse
 
 def cli_arg():
+    tree_cli = cli.Directories()
     parser = argparse.ArgumentParser(prog="cli tree", description="Directory tree generator.", epilog="Thanks for using my CLI Tree.")
 
     parser.add_argument(
@@ -13,7 +14,7 @@ def cli_arg():
         help="Generate a full directory tree starting at ROOT_DIR"
     )
 
-    parser.version = f"Current version is {__version__}"
+    parser.version = f"CLI Tree {__version__}"
     parser.add_argument("-v", "--version", action="version", help="shows program's version number and exits")
 
     parser.add_argument("-d", "--dir-only", help="Generates a directory-only tree.")
@@ -22,8 +23,7 @@ def cli_arg():
     parser.parse_args()
 
 def main():
-    tree_cli = cli.Directories()
-
+ 
     cli_arg()
 
 
