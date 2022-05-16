@@ -1,13 +1,12 @@
 import os
 from pathlib import Path
+from glob import glob
 
-TREE_PIPE = "│"
-TREE_TEE = "├──"
-TREE_ELBOW = "└──"
+import tree_gen
 
 class Directories:
-    def __init__(self):
-        self.subdirectory_queues = []
+    def __init__(self, root_directory):
+        self.root_dir = tree_gen.TreeGenerator(root_directory)
 
     def find_root_dir(self):
         current_file_path = os.path.dirname(__file__)
@@ -17,17 +16,17 @@ class Directories:
         return PROJECT_ROOT
 
     def find_subdirectories(self):
-        
+        subdirectories_queues = []
         path = Path(".")
         for subdirectories in path.iterdir():
             if subdirectories.is_dir():
-                self.subdirectory_queues.append(subdirectories)
-                print(subdirectories)
-        
-        return self.subdirectory_queues
-    
-    def return_subdirectories_queue(self):
-        return self.subdirectory_queues if (len(self.subdirectory_queues)> 0) else False
+                convert_window_path_to_string = subdirectories.__str__()
+                subdirectories_queues.append(convert_window_path_to_string)
+                #print(subdirectories)
+
+        # print(subdirectories_queues)
+
+        return subdirectories_queues
 
     def list_files_in_subdirectories(self, path):
         subdirectory_item = list(path.glob("**/*.py"))
@@ -39,7 +38,8 @@ def main():
     current_directory = os.path.exists(path)
 
     direct = Directories()
-    print(direct.list_files_in_subdirectories(path))
+    # print(direct.list_files_in_subdirectories(path))
+    direct.find_subdirectories()
 
 if __name__ == "__main__":
     main()

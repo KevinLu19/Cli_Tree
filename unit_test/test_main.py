@@ -19,8 +19,10 @@ class TestDirectories:
         print(subdirectory_item)
 
 
-x = TestDirectories()
-x.test_find_root_dir()
+# x = TestDirectories()
+# x.test_find_root_dir()
 
 class TreeGenerator:
-    pass
+    
+    def test_print_trees(self):
+        pass
