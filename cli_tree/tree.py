@@ -8,8 +8,6 @@ class TreeStruct:
     TREE_PIPE: str = "│"
     TREE_TEE: str = "├──"
     TREE_ELBOW: str = "└──"
-    # TREE_TEE_SUFFIX: string = "├──   "
-    # TREE_ELBOW_SUFFIX:string = "└──   " 
 
 class TreeGenerator:
     def __init__(self, root_dir, dir_only = False):
@@ -37,6 +35,15 @@ class TreeGenerator:
             
             print(entry)
             print(connector)
+
+    def prepare_entries(self, directory):
+        entries = directory.iterdir()
+
+        if self.dir_only:
+            entries = [entry for entry in entries if entry.is_dir()]
+            return entries
+        entries = sorted(entries, key=lambda entry: entry.is_file())
+        return entries
 
 def main():
     sample_root = "../cli_tree"

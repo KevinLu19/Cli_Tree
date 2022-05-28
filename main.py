@@ -36,6 +36,7 @@ def main():
 
     tree = cli.Directories(root_dir)
     print(tree.find_subdirectories())
+    print(tree.root_dir.tree_body(root_dir))
 
 if __name__ == "__main__":
     main()
