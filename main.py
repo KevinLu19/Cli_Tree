@@ -19,10 +19,25 @@ def argument_handler():
     )
 
     parser.version = f"CLI Tree {__version__}"
-    parser.add_argument("-v", "--version", action="version", help="shows program's version number and exits")
+    parser.add_argument(
+        "-v", 
+        "--version", 
+        action="version", 
+        help="shows program's version number and exits")
 
-    parser.add_argument("-d", "--dir-only", help="Generates a directory-only tree.")
-    parser.add_argument("-o[OUTPUT_FILE]", metavar= "--output-file [OUTPUT_FILE]", help="Genearte a full directory tree and save it to file.")
+    parser.add_argument(
+        "-d", 
+        "--dir-only", 
+        help="Generates a directory-only tree."
+        )
+    parser.add_argument(
+        "-o",
+        "--output-file", 
+        metavar= "OUTPUT_FILE",
+        nargs= "?",
+        default= sys.stdout, 
+        help="Genearte a full directory tree and save it to file."
+    )
 
     return parser.parse_args()
 
@@ -35,8 +50,8 @@ def main():
         sys.exit()
 
     tree = cli.Directories(root_dir)
-    print(tree.find_subdirectories())
-    print(tree.root_dir.tree_body(root_dir))
+    # print(tree.find_subdirectories())
+    # print(tree.root_dir.tree_body(root_dir))
 
 if __name__ == "__main__":
     main()

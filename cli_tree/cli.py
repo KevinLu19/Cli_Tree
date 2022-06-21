@@ -22,9 +22,6 @@ class Directories:
             if subdirectories.is_dir():
                 convert_window_path_to_string = subdirectories.__str__()
                 subdirectories_queues.append(convert_window_path_to_string)
-                #print(subdirectories)
-
-        # print(subdirectories_queues)
 
         return subdirectories_queues
 
@@ -33,7 +30,6 @@ def main():
     current_directory = os.path.exists(path)
 
     direct = Directories()
-    # print(direct.list_files_in_subdirectories(path))
     direct.find_subdirectories()
 
 if __name__ == "__main__":

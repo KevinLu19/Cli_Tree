@@ -15,16 +15,6 @@ class TreeGenerator:
         self.tree_struct = TreeStruct()
         self.root_dir = pathlib.Path(root_dir)
         self.dir_only = dir_only
-    
-    # def print_trees(self):
-    #     cli_class_queue = self.CLI_CLASS.find_subdirectories()
-    #     length_of_entries = len(cli_class_queue)
-
-    #     for index, entry in enumerate(cli_class_queue):
-    #         connector = self.tree_struct.TREE_ELBOW if (index == length_of_entries -1) else self.tree_struct.TREE_TEE
-            
-    #         print(entry)
-    #         print(connector)
 
     def tree_body(self, directory):
         entries = self.prepare_entries(directory)
